@@ -125,7 +125,7 @@
                                        self.preferredTitleOffset.x,
                                        self.preferredTitleOffset.y,
                                        self.contentView.fs_width,
-                                       floor(self.contentView.fs_height*5.0/6.0)
+                                       self.contentView.fs_height
                                        );
     }
     
