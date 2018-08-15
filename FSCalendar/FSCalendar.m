@@ -1245,7 +1245,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     } else if (self.hasValidateVisibleLayout) {
         [_collectionViewLayout layoutAttributesForElementsInRect:_collectionView.bounds];
         CGRect headerFrame = [_collectionViewLayout layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader atIndexPath:[NSIndexPath indexPathForItem:0 inSection:scrollOffset]].frame;
-        CGPoint targetOffset = CGPointMake(0, MIN(headerFrame.origin.y,MAX(0,_collectionViewLayout.collectionViewContentSize.height-_collectionView.fs_bottom)));
+        CGPoint targetOffset = CGPointMake(0, MIN(headerFrame.origin.y,MAX(0,_collectionViewLayout.collectionViewContentSize.height-_collectionView.fs_bottom + 200)));
         [_collectionView setContentOffset:targetOffset animated:animated];
     }
     if (!animated) {
@@ -1635,7 +1635,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 - (void)adjustMonthPosition
 {
     [self requestBoundingDatesIfNecessary];
-    NSDate *targetPage = self.pagingEnabled?self.currentPage:(self.currentPage?:self.selectedDate);
+    NSDate *targetPage = self.pagingEnabled?self.currentPage:self.selectedDate;
     [self scrollToPageForDate:targetPage animated:NO];
     self.calendarHeaderView.needsAdjustingMonthPosition = YES;
 }
